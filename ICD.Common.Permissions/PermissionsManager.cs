@@ -42,7 +42,7 @@ namespace ICD.Common.Permissions
 		}
 
 		[PublicAPI]
-		public string[] GetRoles(IAction action)
+		public IEnumerable<string> GetRoles(IAction action)
 		{
 			var permission = DefaultPermissions.SingleOrDefault(p => p.Action.Value.Equals(action.Value));
 			if (permission == null)
@@ -51,7 +51,7 @@ namespace ICD.Common.Permissions
 		}
 
 		[PublicAPI]
-		public string[] GetRoles(IAction action, object obj)
+		public IEnumerable<string> GetRoles(IAction action, object obj)
 		{
 			if (ObjectPermissions.ContainsKey(obj))
 			{
