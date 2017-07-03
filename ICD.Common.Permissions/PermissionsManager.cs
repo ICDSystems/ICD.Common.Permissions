@@ -23,9 +23,8 @@ namespace ICD.Common.Permissions
 		}
 
 		[PublicAPI]
-		public void SetPermissions(IEnumerable<Permission> permissions)
+		public void SetDefaultPermissions(IEnumerable<Permission> permissions)
 		{
-			//Remove permissions with duplicate actions by using GroupBy -> Select First
 			DefaultPermissions = RemoveDuplicateActions(permissions).ToList();
 		}
 
@@ -65,6 +64,7 @@ namespace ICD.Common.Permissions
 
 		private IEnumerable<Permission> RemoveDuplicateActions(IEnumerable<Permission> permissions)
 		{
+			//Remove permissions with duplicate actions by using GroupBy -> Select First
 			return permissions.GroupBy(p => p.Action).Select(g => g.First());
 		}
 	}
