@@ -13,5 +13,10 @@
 		{
 			return Value;
 		}
+
+		public static Action FromString(string action)
+		{
+			return new Action(action);
+		}
 	}
 }
