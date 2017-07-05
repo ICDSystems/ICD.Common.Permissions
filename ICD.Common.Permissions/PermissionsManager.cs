@@ -13,7 +13,10 @@ namespace ICD.Common.Permissions
 
 		private SafeCriticalSection DefaultPermissionsSection { get; set; }
 		private SafeCriticalSection ObjectPermissionsSection { get; set; }
-		 
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
 		public PermissionsManager()
 		{
 			DefaultPermissions = new List<Permission>();
@@ -22,24 +25,42 @@ namespace ICD.Common.Permissions
 			ObjectPermissionsSection = new SafeCriticalSection();
 		}
 
+		/// <summary>
+		/// Sets the default set of permissions
+		/// </summary>
+		/// <param name="permissions"></param>
 		[PublicAPI]
 		public void SetDefaultPermissions(IEnumerable<Permission> permissions)
 		{
 			DefaultPermissions = RemoveDuplicateActions(permissions).ToList();
 		}
 
+		/// <summary>
+		/// Sets the object-specific permissions for the given object
+		/// </summary>
+		/// <param name="obj"></param>
+		/// <param name="permissions"></param>
 		[PublicAPI]
 		public void SetObjectPermissions(object obj, IEnumerable<Permission> permissions)
 		{
 			ObjectPermissions[obj] = RemoveDuplicateActions(permissions).ToList();
 		}
 
+		/// <summary>
+		/// Removes the object-specific permissions for the given object
+		/// </summary>
+		/// <param name="obj"></param>
 		[PublicAPI]
 		public void RemoveObjectPermissions(object obj)
 		{
 			ObjectPermissions.Remove(obj);
 		}
 
+		/// <summary>
+		/// Gets the set of roles required for an action. Uses default permissions as a lookup
+		/// </summary>
+		/// <param name="action"></param>
+		/// <returns></returns>
 		[PublicAPI]
 		public IEnumerable<string> GetRoles(IAction action)
 		{
@@ -49,6 +70,13 @@ namespace ICD.Common.Permissions
 			return permission.Roles.ToArray();
 		}
 
+		/// <summary>
+		/// Gets the set of roles required for an action on specific object. Falls back to default permissions
+		/// if no object-specific permissions are found
+		/// </summary>
+		/// <param name="action"></param>
+		/// <param name="obj"></param>
+		/// <returns>null if no permissions were found</returns>
 		[PublicAPI]
 		public IEnumerable<string> GetRoles(IAction action, object obj)
 		{
@@ -62,6 +90,11 @@ namespace ICD.Common.Permissions
 			return GetRoles(action);
 		}
 
+		/// <summary>
+		/// Removes permissions with duplicate actions
+		/// </summary>
+		/// <param name="permissions"></param>
+		/// <returns></returns>
 		private IEnumerable<Permission> RemoveDuplicateActions(IEnumerable<Permission> permissions)
 		{
 			//Remove permissions with duplicate actions by using GroupBy -> Select First
