@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
-namespace ICD.Common.Permissions.Test_SimplSharp
+namespace ICD.Common.Permissions.Test
 {
 	[TestFixture]
 	public class PermissionsManagerTests
