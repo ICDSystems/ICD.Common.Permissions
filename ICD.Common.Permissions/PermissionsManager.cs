@@ -5,7 +5,7 @@ using ICD.Common.Utils;
 
 namespace ICD.Common.Permissions
 {
-	public class PermissionsManager
+	public sealed class PermissionsManager
 	{
 		private List<Permission> DefaultPermissions { get; set; }
 
