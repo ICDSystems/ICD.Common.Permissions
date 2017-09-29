@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyTitle("ICD.Common.Permissions.Test_SimplSharp")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ICD.Common.Permissions.Test_SimplSharp")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyTitle("ICD.Common.Permissions.Test")]
+[assembly: AssemblyCompany("ICD Systems")]
+[assembly: AssemblyProduct("ICD.Common.Permissions.Test")]
+[assembly: AssemblyCopyright("Copyright © ICD Systems 2017")]
 [assembly: AssemblyVersion("1.0.0.*")]
 
