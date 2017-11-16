@@ -15,7 +15,7 @@ namespace ICD.Common.Permissions
 		private SafeCriticalSection ObjectPermissionsSection { get; set; }
 
 		public IEnumerable<string> DefaultRoles { get; set; }
-		
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -66,7 +66,7 @@ namespace ICD.Common.Permissions
 		[PublicAPI]
 		public IEnumerable<string> GetRoles(IAction action)
 		{
-			var permission = DefaultPermissions.SingleOrDefault(p => p.Action.Value.Equals(action.Value));
+			Permission permission = DefaultPermissions.SingleOrDefault(p => p.Action.Value.Equals(action.Value));
 			if (permission == null)
 				return (DefaultRoles ?? Enumerable.Empty<string>()).ToList();
 			return permission.Roles.ToList();
@@ -84,7 +84,7 @@ namespace ICD.Common.Permissions
 		{
 			if (ObjectPermissions.ContainsKey(obj))
 			{
-				var permission = ObjectPermissions[obj].SingleOrDefault(p => p.Action.Value.Equals(action.Value));
+				Permission permission = ObjectPermissions[obj].SingleOrDefault(p => p.Action.Value.Equals(action.Value));
 				if (permission == null)
 					return GetRoles(action);
 				return permission.Roles.ToList();
