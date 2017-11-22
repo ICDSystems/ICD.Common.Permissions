@@ -69,8 +69,8 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action.cs" />
-    <Compile Include="IAction.cs" />
+    <Compile Include="Permissable.cs" />
+    <Compile Include="IPermissable.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="PermissionsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

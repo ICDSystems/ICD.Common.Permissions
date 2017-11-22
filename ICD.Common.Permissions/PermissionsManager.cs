@@ -61,12 +61,12 @@ namespace ICD.Common.Permissions
 		/// <summary>
 		/// Gets the set of roles required for an action. Uses default permissions as a lookup
 		/// </summary>
-		/// <param name="action"></param>
+		/// <param name="permissable"></param>
 		/// <returns></returns>
 		[PublicAPI]
-		public IEnumerable<string> GetRoles(IAction action)
+		public IEnumerable<string> GetRoles(IPermissable permissable)
 		{
-			Permission permission = DefaultPermissions.SingleOrDefault(p => p.Action.Value.Equals(action.Value));
+			Permission permission = DefaultPermissions.SingleOrDefault(p => p.Permissable.Name.Equals(permissable.Name));
 			if (permission == null)
 				return (DefaultRoles ?? Enumerable.Empty<string>()).ToList();
 			return permission.Roles.ToList();
@@ -76,20 +76,20 @@ namespace ICD.Common.Permissions
 		/// Gets the set of roles required for an action on specific object. Falls back to default permissions
 		/// if no object-specific permissions are found
 		/// </summary>
-		/// <param name="action"></param>
+		/// <param name="permissable"></param>
 		/// <param name="obj"></param>
 		/// <returns>null if no permissions were found</returns>
 		[PublicAPI]
-		public IEnumerable<string> GetRoles(IAction action, object obj)
+		public IEnumerable<string> GetRoles(IPermissable permissable, object obj)
 		{
 			if (ObjectPermissions.ContainsKey(obj))
 			{
-				Permission permission = ObjectPermissions[obj].SingleOrDefault(p => p.Action.Value.Equals(action.Value));
+				Permission permission = ObjectPermissions[obj].SingleOrDefault(p => p.Permissable.Name.Equals(permissable.Name));
 				if (permission == null)
-					return GetRoles(action);
+					return GetRoles(permissable);
 				return permission.Roles.ToList();
 			}
-			return GetRoles(action);
+			return GetRoles(permissable);
 		}
 
 		/// <summary>
@@ -100,7 +100,7 @@ namespace ICD.Common.Permissions
 		private IEnumerable<Permission> RemoveDuplicateActions(IEnumerable<Permission> permissions)
 		{
 			//Remove permissions with duplicate actions by using GroupBy -> Select First
-			return permissions.GroupBy(p => p.Action).Select(g => g.First());
+			return permissions.GroupBy(p => p.Permissable).Select(g => g.First());
 		}
 	}
 }

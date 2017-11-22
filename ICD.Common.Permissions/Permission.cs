@@ -3,7 +3,7 @@ using ICD.Common.Utils.Xml;
 
 namespace ICD.Common.Permissions
 {
-	public class Permission
+	public sealed class Permission
 	{
 		private const string ACTION_ELEMENT = "Action";
 		private const string ROLE_ELEMENT = "Role";
@@ -12,7 +12,7 @@ namespace ICD.Common.Permissions
 		/// <summary>
 		/// Action that needs permission
 		/// </summary>
-		public IAction Action { get; set; }
+		public IPermissable Permissable { get; set; }
 
 		/// <summary>
 		/// Set of roles, at least one of which is required to take the action
@@ -28,7 +28,7 @@ namespace ICD.Common.Permissions
 		{
 			return new Permission
 			{
-				Action = Permissions.Action.FromString(XmlUtils.TryReadChildElementContentAsString(xml, ACTION_ELEMENT)),
+				Permissable = Permissions.Permissable.FromString(XmlUtils.TryReadChildElementContentAsString(xml, ACTION_ELEMENT)),
 				Roles = XmlUtils.ReadListFromXml(xml, ROLES_ELEMENT, ROLE_ELEMENT, c => XmlUtils.ReadElementContent(c))
 			};
 		}

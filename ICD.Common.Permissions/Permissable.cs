@@ -1,15 +1,15 @@
 ﻿namespace ICD.Common.Permissions
 {
-	public class Action : IAction
+	public class Permissable : IPermissable
 	{
 		/// <summary>
 		/// The name of the action
 		/// </summary>
-		public string Value { get; set; }
+		public string Name { get; set; }
 
-		protected Action(string value)
+		protected Permissable(string name)
 		{
-			Value = value;
+			Name = name;
 		}
 
 		/// <summary>
@@ -18,17 +18,17 @@
 		/// <returns></returns>
 		public override string ToString()
 		{
-			return Value;
+			return Name;
 		}
 
 		/// <summary>
 		/// Parses an xml &lt;Action&gt; element into an Action.
 		/// </summary>
-		/// <param name="action"></param>
+		/// <param name="name"></param>
 		/// <returns></returns>
-		public static Action FromString(string action)
+		public static Permissable FromString(string name)
 		{
-			return new Action(action);
+			return new Permissable(name);
 		}
 	}
 }
