@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ICD.Common.Properties;
 using ICD.Common.Utils;
@@ -9,7 +10,7 @@ namespace ICD.Common.Permissions
 	{
 		private List<Permission> DefaultPermissions { get; set; }
 
-		private Dictionary<object, List<Permission>> ObjectPermissions { get; set; }
+		private readonly Dictionary<object, List<Permission>> m_ObjectPermissions;
 
 		private SafeCriticalSection DefaultPermissionsSection { get; set; }
 		private SafeCriticalSection ObjectPermissionsSection { get; set; }
@@ -22,7 +23,7 @@ namespace ICD.Common.Permissions
 		public PermissionsManager()
 		{
 			DefaultPermissions = new List<Permission>();
-			ObjectPermissions = new Dictionary<object, List<Permission>>();
+			m_ObjectPermissions = new Dictionary<object, List<Permission>>();
 			DefaultPermissionsSection = new SafeCriticalSection();
 			ObjectPermissionsSection = new SafeCriticalSection();
 		}
@@ -34,6 +35,9 @@ namespace ICD.Common.Permissions
 		[PublicAPI]
 		public void SetDefaultPermissions(IEnumerable<Permission> permissions)
 		{
+			if (permissions == null)
+				throw new ArgumentNullException("permissions");
+			
 			DefaultPermissions = RemoveDuplicateActions(permissions).ToList();
 		}
 
@@ -45,7 +49,15 @@ namespace ICD.Common.Permissions
 		[PublicAPI]
 		public void SetObjectPermissions(object obj, IEnumerable<Permission> permissions)
 		{
-			ObjectPermissions[obj] = RemoveDuplicateActions(permissions).ToList();
+			if (permissions == null)
+				throw new ArgumentNullException("permissions");
+			
+			List<Permission> newPermissions = RemoveDuplicateActions(permissions).ToList();
+
+			if (newPermissions.Count == 0)
+				m_ObjectPermissions.Remove(obj);
+			else
+				m_ObjectPermissions[obj] = newPermissions;
 		}
 
 		/// <summary>
@@ -55,7 +67,7 @@ namespace ICD.Common.Permissions
 		[PublicAPI]
 		public void RemoveObjectPermissions(object obj)
 		{
-			ObjectPermissions.Remove(obj);
+			m_ObjectPermissions.Remove(obj);
 		}
 
 		/// <summary>
@@ -82,9 +94,9 @@ namespace ICD.Common.Permissions
 		[PublicAPI]
 		public IEnumerable<string> GetRoles(IPermissable permissable, object obj)
 		{
-			if (ObjectPermissions.ContainsKey(obj))
+			if (m_ObjectPermissions.ContainsKey(obj))
 			{
-				Permission permission = ObjectPermissions[obj].SingleOrDefault(p => p.Permissable.Name.Equals(permissable.Name));
+				Permission permission = m_ObjectPermissions[obj].SingleOrDefault(p => p.Permissable.Name.Equals(permissable.Name));
 				if (permission == null)
 					return GetRoles(permissable);
 				return permission.Roles.ToList();
@@ -99,6 +111,9 @@ namespace ICD.Common.Permissions
 		/// <returns></returns>
 		private IEnumerable<Permission> RemoveDuplicateActions(IEnumerable<Permission> permissions)
 		{
+			if(permissions == null)
+				throw new ArgumentNullException("permissions");
+
 			//Remove permissions with duplicate actions by using GroupBy -> Select First
 			return permissions.GroupBy(p => p.Permissable).Select(g => g.First());
 		}
