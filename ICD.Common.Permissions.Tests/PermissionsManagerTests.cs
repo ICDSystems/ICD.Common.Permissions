@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
-namespace ICD.Common.Permissions.Test
+namespace ICD.Common.Permissions.Tests
 {
 	[TestFixture]
 	public sealed class PermissionsManagerTests
