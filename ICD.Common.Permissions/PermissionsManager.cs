@@ -94,14 +94,12 @@ namespace ICD.Common.Permissions
 		[PublicAPI]
 		public IEnumerable<string> GetRoles(IPermissable permissable, object obj)
 		{
-			if (m_ObjectPermissions.ContainsKey(obj))
-			{
-				Permission permission = m_ObjectPermissions[obj].SingleOrDefault(p => p.Permissable.Name.Equals(permissable.Name));
-				if (permission == null)
-					return GetRoles(permissable);
-				return permission.Roles.ToList();
-			}
-			return GetRoles(permissable);
+			List<Permission> permissions;
+			if (!m_ObjectPermissions.TryGetValue(obj, out permissions))
+				return GetRoles(permissable);
+
+			Permission permission = permissions.SingleOrDefault(p => p.Permissable.Name.Equals(permissable.Name));
+			return permission == null ? GetRoles(permissable) : permission.Roles.ToList();
 		}
 
 		/// <summary>
