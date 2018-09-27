@@ -57,43 +57,11 @@
     </Reference>
     <Reference Include="SimplSharpReflectionInterface, Version=1.0.5583.25238, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SimplSharpReflectionInterface.dll</HintPath>
-    </Reference>
-    <Reference Include="SSharpCrestronExtensionsLibrary, Version=1.0.0.17991, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SSharpCrestronExtensionsLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="SSharpDateTimeLibrary, Version=1.0.0.13067, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SSharpDateTimeLibrary.dll</HintPath>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpReflectionInterface.dll</HintPath>
     </Reference>
     <Reference Include="SSharpNunitLite, Version=3.0.5791.17741, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SSharpNunitLite.dll</HintPath>
-    </Reference>
-    <Reference Include="SSharpNUnitLiteRunner, Version=3.0.5791.17745, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="SSharpReflectionExtensionsLibrary, Version=1.0.0.13033, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SSharpReflectionExtensionsLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="SSharpThreadingLibrary, Version=1.0.0.13046, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SSharpThreadingLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="SSMonoConcurrentCollectionsLibrary, Version=1.0.0.25343, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SSMonoConcurrentCollectionsLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="SSMonoIOLibrary, Version=1.0.0.28923, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SSMonoIOLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="SSMonoProTaskLibrary, Version=1.0.0.27138, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SimplSharp\rsd_simplsharp_common_devices_solution\RSD.SimplSharp.Common.Displays.Tests\References\SSharpNUnitLiteRunner.cplz\SSharpNUnitLiteRunner.cplz\SSMonoProTaskLibrary.dll</HintPath>
+      <HintPath>References\SSharpNunitLite.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
