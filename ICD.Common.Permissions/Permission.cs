@@ -32,5 +32,20 @@ namespace ICD.Common.Permissions
 				Roles = XmlUtils.ReadListFromXml(xml, ROLES_ELEMENT, ROLE_ELEMENT, c => XmlUtils.ReadElementContent(c))
 			};
 		}
+
+		/// <summary>
+		/// Writes the permission to XML.
+		/// </summary>
+		/// <param name="writer"></param>
+		/// <param name="element"></param>
+		public void ToXml(IcdXmlTextWriter writer, string element)
+		{
+			writer.WriteStartElement(element);
+			{
+				writer.WriteElementString(ACTION_ELEMENT, Permissable.Name);
+				XmlUtils.WriteListToXml(writer, Roles, ROLES_ELEMENT, ROLE_ELEMENT);
+			}
+			writer.WriteEndElement();
+		}
 	}
 }

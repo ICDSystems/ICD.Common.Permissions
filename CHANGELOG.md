@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - Added method for serializing permissions back to XML
+
 ## [3.0.1] - 2018-09-14
 ### Changed
  - Small optimizations
