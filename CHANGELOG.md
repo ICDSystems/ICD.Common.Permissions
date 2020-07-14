@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [3.1.1] - 2020-07-14
+### Changed
+ - Added obfuscation
+ - Updated dependencies
+
 ## [3.1.0] - 2020-03-20
 ### Added
  - Added method for serializing permissions back to XML
