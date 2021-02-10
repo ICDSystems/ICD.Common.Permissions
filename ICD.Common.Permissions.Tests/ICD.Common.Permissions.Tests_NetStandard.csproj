@@ -18,6 +18,12 @@
     <OutputPath>binNetCoreApp\$(Configuration)\</OutputPath>
     <DefineConstants>TRACE;STANDARD</DefineConstants>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Remove="binNetCoreApp\**" />
+    <EmbeddedResource Remove="binNetCoreApp\**" />
+    <None Remove="binNetCoreApp\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Properties\ControlSystem.cfg" />
