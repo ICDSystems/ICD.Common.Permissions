@@ -35,10 +35,10 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Condition="'$(TargetFramework)' == 'net472'" Include="Crestron.SimplSharp.SDK.Library" Version="2.17.69" />
+    <ProjectReference Include="..\..\ICD.Common.Utils\ICD.Common.Utils\ICD.Common.Utils_NetStandard.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ICD.Common.Utils\ICD.Common.Utils\ICD.Common.Utils_NetStandard.csproj" />
+    <PackageReference Condition="'$(TargetFramework)' == 'net472'" Include="Crestron.SimplSharp.SDK.Library" Version="2.18.96" />
   </ItemGroup>
 
 </Project>
